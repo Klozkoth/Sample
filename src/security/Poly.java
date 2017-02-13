@@ -190,38 +190,19 @@ public class Poly {
 	 */
 	protected static String multPoly() {
 		String coef = "";
-		if(degFx == degGx) {
-			for(int i = 0; i < fx.size(); i++) {
-				coef += (fx.get(i) * gx.get(i));
-				coef += " ";
-			}
-			return coef;
-		} else {
-			int diff = (degFx - degGx);
-			int cnt = 0;
-			if(diff < 0) {
-				for(int i = 0; i < Math.abs(diff); i++) {
-					coef += gx.get(i);
-					coef += " ";
-				}
-				for(int i = Math.abs(diff); i < gx.size(); i++) {
-					coef += (fx.get(cnt) * gx.get(i));
-					coef += " ";
-					cnt++;
-				}
-				return coef;
-			} else {
-				for(int i = 0; i < diff; i++) {
-					coef += fx.get(i);
-					coef += " ";
-				}
-				for(int i = diff; i < fx.size(); i++) {
-					coef += (fx.get(i) * gx.get(cnt));
-					coef += " ";
-					cnt++;
-				}
-				return coef;
+		int[] co = new int[degFx + degGx + 1];
+		for(int i = 0; i < (degFx + degGx); i++) {
+			co[i] = 0;
+		}
+		for(int i = 0; i < fx.size(); i++) {
+			for(int g = 0; g < gx.size(); g++) {
+				co[i + g] += (fx.get(i) * gx.get(g));
 			}
 		}
+		for(int num : co) {
+			coef += num;
+			coef += " ";
+		}
+		return coef;
 	}
 }
