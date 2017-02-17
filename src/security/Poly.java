@@ -22,7 +22,7 @@ public class Poly {
 	 */
 	public static void main(String[] args) {
 		loadFile();
-		File output = new File("output.txt");
+		File output = new File("output_poly.txt");
 		output.delete();
 		String temp = leadZero(addPoly());
 		writeFile(output, temp);
@@ -37,7 +37,7 @@ public class Poly {
 	 * polynomial arithmetic. Values are stored to the class variables, hence nothing being returned.
 	 */
 	protected static void loadFile() {
-		File file = new File("input.txt");
+		File file = new File("input_poly.txt");
 		String space = " ";
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -88,7 +88,6 @@ public class Poly {
 	 */
 	protected static String leadZero(String poly) {
 		char[] temp = poly.toCharArray();
-		System.out.println(temp);
 		for(int i = 0; i < temp.length-2; i++) {
 			if(temp[i] != '0' && temp[i] != ' ') {
 				break;
